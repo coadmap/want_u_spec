@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: Auth.v1
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000/v1/auth'
+    description: local
+paths:
+  /sign_in:
+    post:
+      summary: サインインする
+      operationId: post-sign_in
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    $ref: ../models/Account.yaml
+                  token:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: object
+                  required:
+                    - email
+                    - password
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                      format: password
+              required:
+                - account
+  /sign_up:
+    post:
+      summary: サインアップする
+      operationId: post-sign_up
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    $ref: ../models/Account.yaml
+                  token:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: object
+                  required:
+                    - email
+                    - password
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                    password:
+                      type: string
+                      format: password
+              required:
+                - account
+components:
+  schemas: {}
