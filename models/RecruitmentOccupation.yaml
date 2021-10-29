@@ -1,0 +1,19 @@
+title: RecruitmentOccupation
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type:
+      - string
+      - 'null'
+  recruitment:
+    $ref: ./Recruitment.yaml
+  occupation_sub_category:
+    $ref: ./OccupationSubCategory.yaml
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

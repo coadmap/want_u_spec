@@ -1,0 +1,45 @@
+title: Account
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  email:
+    type: string
+    format: email
+  email_verification_status:
+    type: string
+    enum:
+      - unspecified
+      - verified
+    default: unspecified
+  first_name:
+    type: string
+  last_name:
+    type: string
+  first_name_kana:
+    type: string
+  last_name_kana:
+    type: string
+  gender:
+    type: string
+    enum:
+      - male
+      - female
+      - other
+  birthday:
+    type: string
+    format: date
+  avatar_url:
+    type:
+      - string
+      - 'null'
+  last_sign_in_at:
+    type: string
+    format: date-time
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

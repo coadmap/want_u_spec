@@ -1,0 +1,40 @@
+title: AcademicHistory
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  name:
+    type: string
+    example: 明治大学
+  faculty:
+    type:
+      - string
+      - 'null'
+    example: 政治経済学部
+  since_date:
+    type: string
+    format: date
+    example: '2008-04-01'
+  until_date:
+    type: string
+    format: date
+    example: '2012-03-31'
+  type:
+    type: string
+    example: university
+    enum:
+      - graduate_school_doctor
+      - graduate_school_master
+      - university
+      - technical_college
+      - vocational_school
+      - junior_college
+      - high_school
+    description: 「大学院（博士）」「大学院（修士）」「大学」「高専」「専門学校」「短期大学」「高校」
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

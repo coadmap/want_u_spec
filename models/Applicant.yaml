@@ -1,0 +1,22 @@
+title: Applicant
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  status:
+    type: string
+    enum:
+      - pending
+      - offered
+      - rejected
+  recruitment:
+    $ref: ./Recruitment.yaml
+  account:
+    $ref: ./Account.yaml
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

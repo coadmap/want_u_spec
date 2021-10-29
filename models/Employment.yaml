@@ -1,0 +1,20 @@
+title: Employment
+type: object
+properties:
+  id:
+    type: string
+  role:
+    type: string
+    enum:
+      - admin
+      - general
+  account:
+    $ref: ./Account.yaml
+  company:
+    $ref: ./Company.yaml
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
