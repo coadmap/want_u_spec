@@ -79,5 +79,24 @@ paths:
                       format: password
               required:
                 - account
+  /verify_email:
+    get:
+      summary: メールアドレスを確認して、本登録を完了する
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.yaml
+      operationId: get-verify_email
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: token
+          description: email_verification_token
+          required: true
 components:
   schemas: {}
