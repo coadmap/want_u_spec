@@ -6,8 +6,9 @@ properties:
   role:
     type: string
     enum:
-      - admin
       - general
+      - admin
+    default: general
   account:
     $ref: ./Account.yaml
   company:

@@ -70,11 +70,11 @@ paths:
                       format: date
                     avatar:
                       type: string
-  '/accounts/{id}/academic_histories':
+  '/accounts/{account_id}/academic_histories':
     parameters:
       - schema:
           type: string
-        name: id
+        name: account_id
         in: path
         required: true
     get:
@@ -145,11 +145,11 @@ paths:
                       description: 「大学院（博士）」「大学院（修士）」「大学」「高専」「専門学校」「短期大学」「高校」
               required:
                 - academic_history
-  '/accounts/{id}/applicants':
+  '/accounts/{account_id}/applicants':
     parameters:
       - schema:
           type: string
-        name: id
+        name: account_id
         in: path
         required: true
     get:
@@ -194,11 +194,11 @@ paths:
                       format: uuid
               required:
                 - applicant
-  '/accounts/{id}/notifications':
+  '/accounts/{account_id}/notifications':
     parameters:
       - schema:
           type: string
-        name: id
+        name: account_id
         in: path
         required: true
     get:
@@ -217,11 +217,11 @@ paths:
                     items:
                       $ref: ../models/Notification.yaml
       operationId: get-accounts-id-notifications
-  '/accounts/{id}/work_histories':
+  '/accounts/{account_id}/work_histories':
     parameters:
       - schema:
           type: string
-        name: id
+        name: account_id
         in: path
         required: true
     get:
@@ -510,11 +510,11 @@ paths:
                       example: 03-1234-5678
                     logo:
                       type: string
-  '/companies/{id}/applicants':
+  '/companies/{company_id}/applicants':
     parameters:
       - schema:
           type: string
-        name: id
+        name: company_id
         in: path
         required: true
     get:
@@ -533,11 +533,11 @@ paths:
                     items:
                       $ref: ../models/Applicant.yaml
       operationId: get-companies-id-applicants
-  '/companies/{id}/employments':
+  '/companies/{company_id}/employments':
     parameters:
       - schema:
           type: string
-        name: id
+        name: company_id
         in: path
         required: true
     get:
@@ -556,11 +556,71 @@ paths:
                     items:
                       $ref: ../models/Employment.yaml
       operationId: get-companies-id-employments
-  '/companies/{id}/recruitments':
+  '/companies/{company_id}/employments/invite':
+    parameters:
+      - schema:
+          type: string
+        name: company_id
+        in: path
+        required: true
+    post:
+      summary: 企業招待メールを送信する
+      operationId: post-companies-company_id-employments-invite
+      responses:
+        '204':
+          description: No Content
+      description: 受け取ったメールアドレスでAccountとEmploymentを作成し、企業招待メールを送信する
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+                - email
+        description: ''
+  '/employments/{id}':
     parameters:
       - schema:
           type: string
         name: id
+        in: path
+        required: true
+    delete:
+      summary: 雇用を削除する
+      operationId: delete-employments-id
+      responses:
+        '204':
+          description: No Content
+  '/employments/{employment_id}/join':
+    parameters:
+      - schema:
+          type: string
+        name: employment_id
+        in: path
+        required: true
+    get:
+      summary: 招待したアカウントの本登録を完了する
+      tags: []
+      responses:
+        '204':
+          description: No Content
+      operationId: get-employments-employment_id-join
+      description: 招待したAccountのemail_verfication_statusをverfiedにする
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: token
+          required: true
+          description: Employmentのinvite_token
+  '/companies/{company_id}/recruitments':
+    parameters:
+      - schema:
+          type: string
+        name: company_id
         in: path
         required: true
     get:
