@@ -13,29 +13,46 @@ properties:
       - unspecified
       - verified
     default: unspecified
+  email_verification_token:
+    type:
+      - string
+      - 'null'
   first_name:
-    type: string
+    type:
+      - string
+      - 'null'
   last_name:
-    type: string
+    type:
+      - string
+      - 'null'
   first_name_kana:
-    type: string
+    type:
+      - string
+      - 'null'
   last_name_kana:
-    type: string
+    type:
+      - string
+      - 'null'
   gender:
     type: string
     enum:
       - male
       - female
       - other
+    default: male
   birthday:
-    type: string
+    type:
+      - string
+      - 'null'
     format: date
   avatar_url:
     type:
       - string
       - 'null'
   last_sign_in_at:
-    type: string
+    type:
+      - string
+      - 'null'
     format: date-time
   created_at:
     type: string
