@@ -9,6 +9,10 @@ properties:
       - general
       - admin
     default: general
+  invite_token:
+    type:
+      - string
+      - 'null'
   account:
     $ref: ./Account.yaml
   company:
