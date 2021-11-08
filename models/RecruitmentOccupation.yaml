@@ -3,12 +3,11 @@ type: object
 properties:
   id:
     type: string
-  name:
+  description:
     type:
       - string
       - 'null'
-  recruitment:
-    $ref: ./Recruitment.yaml
+    description: 職種詳細
   occupation_sub_category:
     $ref: ./OccupationSubCategory.yaml
   created_at:

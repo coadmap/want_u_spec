@@ -6,8 +6,6 @@ properties:
     format: uuid
   content:
     type: string
-  account:
-    $ref: ./Account.yaml
   created_at:
     type: string
     format: date-time

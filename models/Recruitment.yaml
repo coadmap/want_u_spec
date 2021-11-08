@@ -12,10 +12,12 @@ properties:
     type:
       - integer
       - 'null'
+    description: 単位は円
   max_amount:
     type:
       - integer
       - 'null'
+    description: 単位は円
   billing_method:
     type: string
     enum:
@@ -24,6 +26,7 @@ properties:
       - monthly
       - yearly
     description: 「時給」「日給」「月給」「年収」
+    default: hourly
   department:
     type:
       - string
@@ -39,7 +42,7 @@ properties:
       - string
       - 'null'
     example: 新規事業のフロントサイドエンジニア
-  work_conditions:
+  work_condition:
     type:
       - string
       - 'null'
@@ -52,11 +55,7 @@ properties:
   is_released:
     type: boolean
     default: false
-  occupation_category:
-    $ref: ./OccupationCategory.yaml
-  occupation_sub_category:
-    $ref: ./OccupationSubCategory.yaml
-  occupation:
+  recruitment_occupations:
     $ref: ./RecruitmentOccupation.yaml
   company:
     $ref: ./Company.yaml

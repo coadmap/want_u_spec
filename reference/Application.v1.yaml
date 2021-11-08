@@ -533,6 +533,41 @@ paths:
                     items:
                       $ref: ../models/Applicant.yaml
       operationId: get-companies-id-applicants
+  '/applicants/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    patch:
+      summary: 応募を更新する（採用・不採用を決める）
+      operationId: patch-applicants-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Applicant.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                applicant:
+                  type: object
+                  required:
+                    - status
+                  properties:
+                    status:
+                      type: string
+                      enum:
+                        - offered
+                        - rejected
+              required:
+                - applicant
   '/companies/{company_id}/employments':
     parameters:
       - schema:
@@ -694,13 +729,11 @@ paths:
                     is_released:
                       type: boolean
                       default: false
-                    occupation_category:
-                      $ref: ../models/OccupationCategory.yaml
                     occupation_sub_category:
                       $ref: ../models/OccupationSubCategory.yaml
-                    occupation_name:
+                    occupation_description:
                       type: string
-                      description: RecruitmentOccupationのnameに入る
+                      description: RecruitmentOccupationのdescriptionに入る
               required:
                 - recruitment
   '/recruitments/{id}':

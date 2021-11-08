@@ -8,7 +8,7 @@ properties:
   name:
     type: string
     example: バックエンドエンジニア
-  category:
+  occupation_category:
     $ref: ./OccupationCategory.yaml
   created_at:
     type: string
