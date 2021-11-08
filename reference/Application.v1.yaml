@@ -591,6 +591,19 @@ paths:
                     items:
                       $ref: ../models/Employment.yaml
       operationId: get-companies-id-employments
+  '/employments/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    delete:
+      summary: 雇用を削除する
+      operationId: delete-employments-id
+      responses:
+        '204':
+          description: No Content
   '/companies/{company_id}/employments/invite':
     parameters:
       - schema:
@@ -616,19 +629,6 @@ paths:
               required:
                 - email
         description: ''
-  '/employments/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-    delete:
-      summary: 雇用を削除する
-      operationId: delete-employments-id
-      responses:
-        '204':
-          description: No Content
   '/employments/{employment_id}/join':
     parameters:
       - schema:
