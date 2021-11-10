@@ -70,6 +70,12 @@ paths:
                       format: date
                     avatar:
                       type: string
+    delete:
+      summary: アカウントを削除する
+      operationId: delete-accounts-id
+      responses:
+        '204':
+          description: No Content
   '/accounts/{account_id}/academic_histories':
     parameters:
       - schema:
@@ -451,6 +457,13 @@ paths:
                     items:
                       $ref: ../models/Recruitment.yaml
       operationId: get-recruitments
+  /companies:
+    post:
+      summary: ''
+      operationId: post-companies
+      responses:
+        '200':
+          description: OK
   '/companies/{id}':
     parameters:
       - schema:
