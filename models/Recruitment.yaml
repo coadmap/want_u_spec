@@ -1,6 +1,7 @@
 title: Recruitment
 type: object
 description: タイトルのみで下書き保存可能、公開するのには各attribute必須
+examples: []
 properties:
   id:
     type: string
@@ -55,10 +56,6 @@ properties:
   is_released:
     type: boolean
     default: false
-  recruitment_occupations:
-    $ref: ./RecruitmentOccupation.yaml
-  company:
-    $ref: ./Company.yaml
   created_at:
     type: string
     format: date-time

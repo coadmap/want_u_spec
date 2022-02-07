@@ -1,5 +1,37 @@
 title: Employment
 type: object
+examples:
+  - id: string
+    role: general
+    invite_token: string
+    account:
+      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+      email: user@example.com
+      email_verification_status: unspecified
+      email_verification_token: string
+      first_name: string
+      last_name: string
+      first_name_kana: string
+      last_name_kana: string
+      gender: male
+      birthday: '2019-08-24'
+      avatar_url: string
+      last_sign_in_at: '2019-08-24T14:15:22Z'
+      created_at: '2019-08-24T14:15:22Z'
+      updated_at: '2019-08-24T14:15:22Z'
+    company:
+      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+      name: 株式会社SIMULA Labs
+      name_kana: シミュララボ
+      head_office_location: 東京都港区元赤坂1-7-18
+      year_of_establishment: '2015'
+      hp_url: 'https://simula-labs.com/'
+      phone: 03-1234-5678
+      logo_url: string
+      created_at: '2019-08-24T14:15:22Z'
+      updated_at: '2019-08-24T14:15:22Z'
+    created_at: '2019-08-24T14:15:22Z'
+    updated_at: '2019-08-24T14:15:22Z'
 properties:
   id:
     type: string
@@ -13,10 +45,6 @@ properties:
     type:
       - string
       - 'null'
-  account:
-    $ref: ./Account.yaml
-  company:
-    $ref: ./Company.yaml
   created_at:
     type: string
     format: date-time

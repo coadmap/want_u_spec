@@ -1,5 +1,20 @@
 title: RecruitmentOccupation
 type: object
+examples:
+  - id: string
+    description: string
+    occupation_sub_category:
+      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+      name: バックエンドエンジニア
+      occupation_category:
+        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+        name: バックエンドエンジニア
+        created_at: '2019-08-24T14:15:22Z'
+        updated_at: '2019-08-24T14:15:22Z'
+      created_at: '2019-08-24T14:15:22Z'
+      updated_at: '2019-08-24T14:15:22Z'
+    created_at: '2019-08-24T14:15:22Z'
+    updated_at: '2019-08-24T14:15:22Z'
 properties:
   id:
     type: string
@@ -8,8 +23,6 @@ properties:
       - string
       - 'null'
     description: 職種詳細
-  occupation_sub_category:
-    $ref: ./OccupationSubCategory.yaml
   created_at:
     type: string
     format: date-time

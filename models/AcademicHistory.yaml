@@ -38,3 +38,12 @@ properties:
   updated_at:
     type: string
     format: date-time
+examples:
+  - id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    name: 明治大学
+    faculty: 政治経済学部
+    since_date: '2008-04-01'
+    until_date: '2012-03-31'
+    type: university
+    created_at: '2019-08-24T14:15:22Z'
+    updated_at: '2019-08-24T14:15:22Z'

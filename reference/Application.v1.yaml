@@ -22,13 +22,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  accounts:
-                    type: array
-                    items:
-                      $ref: ../models/Account.yaml
+                $ref: ../models/Account.yaml
       operationId: get-accounts-id
+      description: ''
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
     patch:
       summary: アカウントを更新する
       operationId: patch-accounts-id
@@ -49,33 +51,61 @@ paths:
                   type: object
                   properties:
                     email:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       format: email
                     first_name:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                     last_name:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                     first_name_kana:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                     last_name_kana:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                     gender:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       enum:
                         - male
                         - female
                         - other
                     birthday:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       format: date
                     avatar:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
     delete:
       summary: アカウントを削除する
       operationId: delete-accounts-id
       responses:
         '204':
           description: No Content
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
   '/accounts/{account_id}/academic_histories':
     parameters:
       - schema:
@@ -99,6 +129,11 @@ paths:
                     items:
                       $ref: ../models/AcademicHistory.yaml
       operationId: get-accounts-id-academic_histories
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
     post:
       summary: アカウントの学歴を作成する
       operationId: post-accounts-id-academic_histories
@@ -172,7 +207,12 @@ paths:
                   applicants:
                     type: array
                     items:
-                      $ref: ../models/Applicant.yaml
+                      allOf:
+                        - $ref: ../models/Applicant.yaml
+                        - type: object
+                          properties:
+                            recruitment:
+                              $ref: ../models/Recruitment.yaml
       operationId: get-accounts-id-applicants
     post:
       summary: アカウントの応募を作成する
@@ -183,7 +223,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/Applicant.yaml
+                allOf:
+                  - $ref: ../models/Applicant.yaml
+                  - type: object
+                    properties:
+                      recruitment:
+                        $ref: ../models/Recruitment.yaml
       requestBody:
         content:
           application/json:
@@ -244,14 +289,35 @@ paths:
                   work_histories:
                     type: array
                     items:
-                      $ref: ../models/WorkHistory.yaml
+                      allOf:
+                        - $ref: ../models/WorkHistory.yaml
+                        - type: object
+                          properties:
+                            occupations:
+                              type:
+                                - string
+                                - array
+                              items:
+                                $ref: ../models/OccupationCategory.yaml
+          headers: {}
       operationId: get-accounts-id-work_histories
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+      x-internal: false
     post:
       summary: アカウントの職歴を作成する
       operationId: post-accounts-id-work_histories
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/WorkHistory.yaml
       requestBody:
         content:
           application/json:
@@ -327,21 +393,31 @@ paths:
                   type: object
                   properties:
                     name:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: 明治大学
                     faculty:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: 情報コミュニケーション学部
                     since_date:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       format: date
                       example: '2008-04-01'
                     until_date:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       format: date
                       example: '2012-03-31'
                     type:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: university
                       enum:
                         - graduate_school_doctor
@@ -401,7 +477,7 @@ paths:
                     is_employed:
                       type: boolean
                       description: 「在職中」「離職中」
-                      example: 'true'
+                      example: true
                       default: true
                     position:
                       type: string
@@ -417,6 +493,7 @@ paths:
                     department:
                       type: string
                       example: 部署名
+      description: test description
     delete:
       summary: 職歴を削除する
       operationId: delete-work_histories-id
@@ -436,9 +513,16 @@ paths:
                 type: object
                 properties:
                   occupation_categories:
-                    type: array
-                    items:
-                      $ref: ../models/OccupationCategory.yaml
+                    allOf:
+                      - type: array
+                        items:
+                          $ref: ../models/OccupationCategory.yaml
+                      - type: object
+                        properties:
+                          occupation_sub_categories:
+                            type: array
+                            items:
+                              $ref: ../models/OccupationSubCategory.yaml
       operationId: get-occupation_categories
   /recruitments:
     get:
@@ -464,6 +548,20 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Company.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+                - name
   '/companies/{id}':
     parameters:
       - schema:
@@ -502,27 +600,40 @@ paths:
                   type: object
                   properties:
                     name:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: 株式会社SIMULA Labs
                     name_kana:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: シミュララボ
                     head_office_location:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: 東京都港区元赤坂1-7-18
                     year_of_establishment:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       format: date
-                      example: '2015'
                     hp_url:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       format: uri
                       example: 'https://simula-labs.com/'
                     phone:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
                       example: 03-1234-5678
                     logo:
-                      type: string
+                      type:
+                        - string
+                        - 'null'
   '/companies/{company_id}/applicants':
     parameters:
       - schema:
@@ -545,7 +656,14 @@ paths:
                     type: array
                     items:
                       $ref: ../models/Applicant.yaml
+          headers: {}
       operationId: get-companies-id-applicants
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
   '/applicants/{id}':
     parameters:
       - schema:
@@ -830,7 +948,7 @@ paths:
       summary: ''
       operationId: delete-recruitments-id
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
 components:
   schemas: {}

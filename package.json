@@ -1,0 +1,23 @@
+{
+  "name": "want_u_spec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "spectral lint reference/*.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coadmap/want_u_spec.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coadmap/want_u_spec/issues"
+  },
+  "homepage": "https://github.com/coadmap/want_u_spec#readme",
+  "dependencies": {
+    "@stoplight/spectral-cli": "^6.2.0"
+  }
+}

@@ -1,6 +1,7 @@
 title: WorkHistory
 type: object
 description: ''
+examples: []
 properties:
   id:
     type: string
@@ -11,8 +12,7 @@ properties:
   is_employed:
     type: boolean
     description: 「在職中」「離職中」
-    example: 'true'
-    default: true
+    default: false
   position:
     type:
       - string

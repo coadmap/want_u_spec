@@ -1,0 +1,6 @@
+extends: ["spectral:oas", "spectral:asyncapi"]
+rules:
+  info-description: off
+  operation-description: off
+  operation-tags: off
+  info-contact: off
