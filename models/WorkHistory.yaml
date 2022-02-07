@@ -12,11 +12,10 @@ properties:
   is_employed:
     type: boolean
     description: 「在職中」「離職中」
+    example: 'true'
     default: false
   position:
-    type:
-      - string
-      - 'null'
+    type: string
     example: 主任
   since_date:
     type: string
@@ -25,13 +24,9 @@ properties:
   until_date:
     format: date
     example: '2020-05-01'
-    type:
-      - string
-      - 'null'
+    type: string
   department:
-    type:
-      - string
-      - 'null'
+    type: string
     example: 部署名
   created_at:
     type: string

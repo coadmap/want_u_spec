@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.0
 info:
   title: Auth.v1
   version: '1.0'
@@ -17,12 +17,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  account:
-                    $ref: ../models/Account.yaml
-                  token:
-                    type: string
+                $ref: '#/components/schemas/SignInResponse'
       requestBody:
         content:
           application/json:
@@ -53,12 +48,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  account:
-                    $ref: ../models/Account.yaml
-                  token:
-                    type: string
+                $ref: '#/components/schemas/SignUpResponse'
       requestBody:
         content:
           application/json:
@@ -99,4 +89,20 @@ paths:
           description: email_verification_token
           required: true
 components:
-  schemas: {}
+  schemas:
+    SignInResponse:
+      title: SignInResponse
+      type: object
+      properties:
+        account:
+          $ref: ../models/Account.yaml
+        token:
+          type: string
+    SignUpResponse:
+      title: SignInResponse
+      type: object
+      properties:
+        account:
+          $ref: ../models/Account.yaml
+        token:
+          type: string

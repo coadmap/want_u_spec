@@ -29,18 +29,14 @@ properties:
     format: date
     example: 2015
   hp_url:
-    type:
-      - string
-      - 'null'
+    type: string
     format: uri
     example: 'https://simula-labs.com/'
   phone:
     type: string
     example: 03-1234-5678
   logo_url:
-    type:
-      - string
-      - 'null'
+    type: string
   created_at:
     type: string
     format: date-time

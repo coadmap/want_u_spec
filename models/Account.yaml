@@ -1,5 +1,6 @@
 title: Account
 type: object
+examples: []
 properties:
   id:
     type: string
@@ -14,25 +15,17 @@ properties:
       - verified
     default: unspecified
   email_verification_token:
-    type:
-      - string
-      - 'null'
+    type: string
+    format: uuid
   first_name:
-    type:
-      - string
-      - 'null'
+    type: string
   last_name:
-    type:
-      - string
-      - 'null'
+    type: string
   first_name_kana:
-    type:
-      - string
-      - 'null'
+    type: string
   last_name_kana:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
   gender:
     type: string
     enum:
@@ -41,18 +34,12 @@ properties:
       - other
     default: male
   birthday:
-    type:
-      - string
-      - 'null'
+    type: string
     format: date
   avatar_url:
-    type:
-      - string
-      - 'null'
+    type: string
   last_sign_in_at:
-    type:
-      - string
-      - 'null'
+    type: string
     format: date-time
   created_at:
     type: string
@@ -60,4 +47,3 @@ properties:
   updated_at:
     type: string
     format: date-time
-examples: []

@@ -10,14 +10,10 @@ properties:
     type: string
     example: 三度の飯よりReact！そんなGeekなあなたへ
   min_amount:
-    type:
-      - integer
-      - 'null'
+    type: integer
     description: 単位は円
   max_amount:
-    type:
-      - integer
-      - 'null'
+    type: integer
     description: 単位は円
   billing_method:
     type: string
@@ -29,29 +25,19 @@ properties:
     description: 「時給」「日給」「月給」「年収」
     default: hourly
   department:
-    type:
-      - string
-      - 'null'
+    type: string
     example: 開発部
   position:
-    type:
-      - string
-      - 'null'
+    type: string
     example: 管理職
   job_description:
-    type:
-      - string
-      - 'null'
+    type: string
     example: 新規事業のフロントサイドエンジニア
   work_condition:
-    type:
-      - string
-      - 'null'
+    type: string
     example: 保険・交通費とか諸々
   qualification_requirement:
-    type:
-      - string
-      - 'null'
+    type: string
     example: ・大卒以上　・40歳未満
   is_released:
     type: boolean

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "spectral lint reference/*.yaml"
+    "lint": "spectral lint reference/*.yaml",
+    "generate:auth": "openapi-generator-cli generate -i reference/Auth.yaml -g typescript-fetch -o generated/Auth",
+    "generate:application": "openapi-generator-cli generate -i reference/Application.v1.yaml -g typescript-fetch -o generated/Application"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,8 @@
   "homepage": "https://github.com/coadmap/want_u_spec#readme",
   "dependencies": {
     "@stoplight/spectral-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.26"
   }
 }
